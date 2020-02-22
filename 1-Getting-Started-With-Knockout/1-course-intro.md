@@ -1,13 +1,13 @@
 # Course Intro
 
-## What You Should Know
+## O que vocÊ deve saber
 
 - HTML / CSS
 - Basic JavaScript
 - jQuery
 - Basic Programming Logic
 
-## Technology & Concepts
+## Conceitos e Tecnologias
 
 - Frontend UI Development
 - KnockoutJS
@@ -17,7 +17,7 @@
 - JavaScript / jQuery / Ajax
 - NodeJS / Express / MongoDB
 
-## Chapter Overview
+## Overview dos Capítulos
 
 1. Getting Started
 2. View Models & Observables
