@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example: JS Refresher</title>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+</head>
+
+<body>
+  <!-- Neste exemplo, estamos implementando um botão para adicionar novos usuários, porém, repare que utilizando Jquery não é tão simples fazer com que a UI seja atualizada de acordo com a atualização dos dados, isso por que as modificações não ocorrem somultaneamente, como em um data binding, neste caso, só teremos o resultado no console. -->
+
+  <ul id="people"></ul>
+
+  <input id="firstName" type="text">
+  <input id="lastName" type="text">
+
+  <button id="addPerson">Add</button>
+
+  <script>
+    var firstName = 'Jonatas';
+    var lastName = 'Antunes';
+    var fullName = firstName + ' ' + lastName;
+
+    var people = [
+      { firstName: 'Carlos', lastName: 'Ferreira' },
+      { firstName: 'Elizete', lastName: 'Santos' },
+      { firstName: 'Willian', lastName: 'Souza' }
+    ];
+
+    $.each(people, function (index, value) {
+      $('#people').append('<li>' +
+        people[index].firstName +
+        ' ' +
+        people[index].lastName +
+        '</li>');
+    });
+
+    $('#addPerson').click(function () {
+      people.push({
+        firstName: $('#firstName').val(),
+        lastName: $('#lastName').val()
+      });
+      console.log(people);
+    });
+  </script>
+</body>
+
+</html>
