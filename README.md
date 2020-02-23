@@ -7,5 +7,7 @@
 - [2. What is Knockout](./1-Getting-Started-With-Knockout/2-what-is-knockout.md)
 - [3. JavaScript Refresher](./1-Getting-Started-With-Knockout/3-javascript-refresher.html)
 
+### Seção 2: View Models & Observables
+
 ## Referências
 - [Documenação](https://knockoutjs.com/documentation/introduction.html)

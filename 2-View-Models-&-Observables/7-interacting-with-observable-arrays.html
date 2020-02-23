@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7. Interacting with Observable Arrays</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Usuários</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody data-bind="foreach: users">
+        <tr>
+          <td data-bind="text: $index"></td>
+          <td data-bind="text: name"></td>
+          <td>
+            <!-- Utilizaremos o '$parent' pois ao clicar neste botão, queremos remover a <tr> do usuário selecionado -->
+            <a href="#" class="btn btn-danger" data-bind="click: $parent.removeUser">
+              Remover
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <input type="text" id="newUser">
+
+    <button class="btn btn-primary" data-bind="click: addUser">
+      Adicionar usuário
+    </button>
+  </div>
+
+  <script>
+    /* As funções que utilizaremos para interagir com o observableArray e a tabela de usuários, serão declaradas no view model */
+    function viewModel() {
+      var self = this;
+
+      self.users = ko.observableArray([
+        { name: 'Jonatas' },
+        { name: 'Anderson' },
+        { name: 'Daniel' }
+      ]);
+
+      self.addUser = function () {
+        self.users.push({
+          name: $('#newUser').val()
+        });
+      }
+
+      self.removeUser = function () {
+        /* dentro do contexto de eventos, o 'this' é o próprio elemento HTML que chamou a função, neste caso como utlizamos $parent, será a '<tr>' */
+        self.users.remove(this);
+      }
+    }
+
+    /* instânciando um objeto da função viewModel(), teremos acesso às suas informações e aos métodos do 'ko.observableArray' na propriedade 'users' */
+
+    console.log(new viewModel());
+
+    ko.applyBindings(new viewModel());
+  </script>
+</body>
+
+</html>

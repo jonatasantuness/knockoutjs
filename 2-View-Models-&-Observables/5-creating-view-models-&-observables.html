@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5. Creating View Models & Observables</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- É necessario informar o tipo de dado no atributo 'data-bind' -->
+  <h1>Bem vindo
+    <span data-bind="text: firstName"></span>
+    <span data-bind="text: lastName"></span>
+  </h1>
+
+  <!-- Ao inserir alguma informação e tirar o foco do input, o valor respectivo do data-bind é atualizado, isso por que o evento padrão é o 'out of focus', porém podemos mudar para qualquer tipo de evento, no exemplo do input 'lastName' vamos configurar o evento 'afterkeydown', assim o valor sera atualizado no momento em que muda o input. ref: https://knockoutjs.com/documentation/value-binding.html-->
+
+  <form>
+    <label for="firstName">Nome:</label>
+    <input type="text" id="firstName" data-bind="value: firstName">
+
+    <label for="lastName">Nome:</label>
+    <input type="text" id="lastName" data-bind="value: lastName, valueUpdate: 'afterkeydown'">
+  </form>
+
+  <br>
+
+  <button>Mudar Nome</button>
+
+  <script>
+    /* O primeiro passo é adicionar o KnockoutJS, neste caso estamos adicionando via tag script por uma CDN. */
+
+    /* Para podermos mudar o nome dinâmicamente precisamos criar uma view model com observables, então vamos criar a variável para testarmos: */
+
+    var myViewModelObservable = {
+      firstName: ko.observable('Jonatas'),
+      lastName: ko.observable('Antunes')
+    }
+
+    // ko.applyBindings(viewModel): aplica as 'binding fuctions'
+
+    ko.applyBindings(myViewModelObservable);
+
+    $('button').click(function () {
+      myViewModelObservable.firstName('Johnny');
+      myViewModelObservable.lastName('Souza');
+    });
+
+    // Utilizando o subscribe no observable
+
+    myViewModelObservable.firstName.subscribe(function (newValue) {
+      alert('o firstName foi alterado para ' + newValue);
+    });
+
+    /* Para ser notificado sobre um valor d ume observable antes que ele esteja prestes a ser alterado, utilize o evento 'beforeChange'. ref: https://knockoutjs.com/documentation/observables.html#explicitly-subscribing-to-observables */
+
+    myViewModelObservable.firstName.subscribe(function (oldValue) {
+      alert('o firstName anterior era ' + oldValue);
+    }, null, 'beforeChange');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6. Observable Arrays</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>Lista de Usuários</h1>
+
+  <!-- Para o foreach funcionar precisamos chamar o 'Aplly Bindings' após as declarações dos observablesArrays -->
+
+  <ul data-bind="foreach: userArray1">
+    <li data-bind="text: $data"></li>
+  </ul>
+
+  <h1>Tabela de usuários</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+      </tr>
+    </thead>
+
+    <tbody data-bind="foreach: userArray2">
+      <tr>
+        <td data-bind="text: firstName"></td>
+        <td data-bind="text: lastName"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    var userArray1 = ko.observableArray([
+      'Jonatas',
+      'Fernanda',
+      'Anderson'
+    ]);
+
+    // O observableArray é um método do objeto 'ko' que retorna o array
+
+    console.log(userArray1);
+
+    // retorno do array
+
+    console.log(userArray1());
+
+    // utilizando a propriedade length
+
+    console.log('Existem ' + userArray1().length + ' usuários!');
+
+    // adicionando um item
+
+    console.log(userArray1.push('Daniel'));
+
+    // Obtendo um item específico
+
+    console.log(userArray1()[3]);
+
+    // criando uma coleção de objetos
+
+    var userArray2 = ko.observableArray([
+      { firstName: 'Jonatas', lastName: 'Antunes' },
+      { firstName: 'Carlos', lastName: 'Ferreira' },
+      { firstName: 'Elizete', lastName: 'Santos' }
+    ]);
+
+    // acessando a propriedade de um objeto específico
+
+    console.log(userArray2()[0].firstName);
+
+    /* O atributo 'data-bind' não é nativo do HTML, embora seja perfeitamente aceitável (é estritamente compatível com o HTML5 e não causa problemas com o HTML4, mesmo que um validador indique que é um atributo não reconhecido). Mas como o navegador não sabe o que significa, você precisa ativar o Knockout para que ele entre em vigor, para ativá-lo utilize o método 'ko.applyBindings();' */
+
+    ko.applyBindings();
+  </script>
+</body>
+
+</html>
