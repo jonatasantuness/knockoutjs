@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-12. The "Style" binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <h1>Boletim Escolar</h1>
+
+  <input type="number" min="0" max="10" placeholder="Nota do aluno"
+    data-bind="value: nota, valueUpdate: 'afterkeydown'">
+
+  <!-- Dentro do if ternário, será decidido se o elemento irá receber o atribito style de cor vermelha ou azul dependendo da nota do aluno. -->
+
+  <p>
+    Nota do aluno:
+    <strong data-bind="
+      text: nota,
+      style: { color: nota() < 6 ? 'red' : 'blue' }">
+    </strong>
+  </p>
+
+  <script>
+    /* O Style Building adiciona ou remove um ou mais valores de estilo ao elemento DOM associado. Isso é útil, por exemplo, para destacar algum valor em vermelho se ele se tornar negativo ou para definir a largura de uma barra para corresponder a um valor numérico que é alterado. */
+
+    // ref: https://knockoutjs.com/documentation/style-binding.html
+
+    var viewModel = {
+      nota: ko.observable(5)
+    }
+
+    ko.applyBindings(viewModel);
+  </script>
+</body>
+
+</html>

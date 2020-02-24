@@ -17,7 +17,7 @@
     <span data-bind="text: lastName"></span>
   </h1>
 
-  <!-- Ao inserir alguma informação e tirar o foco do input, o valor respectivo do data-bind é atualizado, isso por que o evento padrão é o 'out of focus', porém podemos mudar para qualquer tipo de evento, no exemplo do input 'lastName' vamos configurar o evento 'afterkeydown', assim o valor sera atualizado no momento em que muda o input. ref: https://knockoutjs.com/documentation/value-binding.html-->
+  <!-- Ao inserir alguma informação e tirar o foco do input, o valor respectivo do data-bind é atualizado, isso por que o evento padrão é o 'out of focus', porém podemos mudar para qualquer tipo de evento, no exemplo do input 'lastName' vamos configurar o evento 'afterkeydown', assim o valor será atualizado no momento em que muda o input. ref: https://knockoutjs.com/documentation/value-binding.html-->
 
   <form>
     <label for="firstName">Nome:</label>
@@ -56,7 +56,7 @@
       alert('o firstName foi alterado para ' + newValue);
     });
 
-    /* Para ser notificado sobre um valor d ume observable antes que ele esteja prestes a ser alterado, utilize o evento 'beforeChange'. ref: https://knockoutjs.com/documentation/observables.html#explicitly-subscribing-to-observables */
+    /* Para ser notificado sobre um valor de um observable antes que ele esteja prestes a ser alterado, utilize o evento 'beforeChange'. ref: https://knockoutjs.com/documentation/observables.html#explicitly-subscribing-to-observables */
 
     myViewModelObservable.firstName.subscribe(function (oldValue) {
       alert('o firstName anterior era ' + oldValue);

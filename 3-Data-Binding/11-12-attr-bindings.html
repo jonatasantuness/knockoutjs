@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-12. The "attr" binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <a data-bind="
+    attr: {
+      href: url,
+      title: details,
+      target: '_blank'}">
+    Sobre o KnockoutJS
+  </a>
+
+  <script>
+    /* A Attr Binding fornece uma maneira genérica de definir o valor de qualquer atributo para o elemento DOM associado. Isso é útil, por exemplo, quando você precisa definir o atributo title de um elemento, o src de uma tag img ou o href de um link com base nos valores do seu modelo de visualização, com o valor do atributo sendo atualizado automaticamente sempre que o valor correspondente alterações de propriedade do modelo. */
+
+    // ref: https://knockoutjs.com/documentation/attr-binding.html
+
+    var viewModel = {
+      url: ko.observable('https://knockoutjs.com/documentation/attr-binding.html'),
+      details: ko.observable('Detalhes sobre o Attr Binding')
+    }
+
+    ko.applyBindings(viewModel);
+  </script>
+</body>
+
+</html>

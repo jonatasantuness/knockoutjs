@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13. Control Flow Bindings - foreach</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>Employees</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+      </tr>
+    </thead>
+
+    <tbody data-bind="foreach: employees">
+      <!-- Na variável employees existe um employer com id null, porém só queremos trazer ids com algum valor, então usaremos a condicional: -->
+      <tr data-bind="if: id">
+        <td data-bind="text: id"></td>
+        <td data-bind="text: name"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    /* Os Bindings "if" e "ifnot" fazem com que uma seção da marcação apareça no seu documento (e tenha seus atributos de ligação de dados aplicados), apenas se uma expressão especificada for avaliada como verdadeira (ou um valor verdadeiro) como um objeto não nulo ou uma sequência não vazia). */
+
+    /* O binding ifnot funciona exatamente como o binding if, exceto que ela inverte o resultado de qualquer expressão que você passar para ela. if (e ifnot) desempenham um papel semelhante às visible/hidden bindings. A diferença é que, com visible, a marcação contida sempre permanece no DOM e sempre tem seus atributos de ligação de dados aplicados - a ligação visible apenas usa CSS para alternar a visibilidade do elemento do contêiner. A ligação if, no entanto, adiciona ou remove fisicamente a marcação contida no seu DOM e só aplica ligações a descendentes se a expressão for verdadeira. */
+
+    // ref: https://knockoutjs.com/documentation/if-binding.html
+
+    var employees = ko.observableArray([
+      { id: 'e100', name: 'Jonatas Antunes' },
+      { id: null, name: 'Anderson Dário' },
+      { id: 'e102', name: 'Daniel Souza' },
+    ]);
+
+    ko.applyBindings();
+  </script>
+</body>
+
+</html>

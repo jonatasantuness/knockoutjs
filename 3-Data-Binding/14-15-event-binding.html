@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-15. Event Binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div data-bind="
+    event: {
+      mouseover: addHover,
+      mouseout: removeHover }">
+    Hover over me!
+  </div>
+
+  <div data-bind="visible: isHover">
+    O Hover está funcionando!!
+  </div>
+
+  <script>
+    /* O Event Binding permite adicionar um manipulador de eventos para um evento especificado, para que a função JavaScript escolhida seja invocada quando esse evento for acionado para o elemento DOM associado. Isso pode ser usado para vincular a qualquer evento, como keypress, mouseover ou mouseout. */
+
+    // ref: https://knockoutjs.com/documentation/event-binding.html
+
+    var viewModel = {
+      isHover: ko.observable(false),
+      addHover: function () {
+        this.isHover(true);
+      },
+      removeHover: function () {
+        this.isHover(false)
+      }
+    }
+
+    ko.applyBindings(viewModel)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-15. Value Binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <p>Login:
+    <input type="text" data-bind="value: userName, valueUpdate: 'afterkeydown'">
+  </p>
+
+  <p>Password:
+    <input type="password" data-bind="value: userPassword">
+  </p>
+
+  <p>
+    Logado como:
+    <span data-bind="text: userName"></span>
+  </p>
+
+  <script>
+    /* O Value Binding vincula o valor do elemento DOM associado a uma propriedade no seu view model. Isso geralmente é útil com elementos de formulário como <input>, <select> e <textarea>. */
+
+    /* Quando o usuário edita o valor no form control associado, ele atualiza o valor no seu view model. Da mesma forma, quando você atualiza o valor no seu view model, isso atualiza o valor do form control na tela. */
+
+    /* Nota: se você estiver trabalhando com checkbox ou radio buttons, use o checked binding para ler e escrever o estado 'checked' do seu elemento, não o binding value. */
+
+    // ref: https://knockoutjs.com/documentation/value-binding.html
+
+    var viewModel = {
+      userName: ko.observable(),
+      userPassword: ko.observable()
+    }
+
+    ko.applyBindings(viewModel)
+  </script>
+</body>
+
+</html>

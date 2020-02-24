@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-15. Click Binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <ul data-bind="foreach: users">
+    <li>
+      <span data-bind="text: $data"></span>
+      <button data-bind="click: $parent.removeUser">Remover</button>
+    </li>
+  </ul>
+
+  <script>
+    /* O Click Binding adiciona um manipulador de eventos para que a função JavaScript escolhida seja chamada quando o elemento DOM associado for clicado. Isso é mais comumente usado com elementos como botão, input e links, mas na verdade funciona com qualquer elemento DOM visível. */
+
+    // ref: https://knockoutjs.com/documentation/click-binding.html
+
+    function viewModel() {
+      var self = this;
+
+      self.users = ko.observableArray([
+        'Jonatas',
+        'Fernanda',
+        'Anderson'
+      ]);
+
+      self.removeUser = function (user) {
+        self.users.remove(user);
+      }
+    }
+
+    ko.applyBindings(new viewModel());
+  </script>
+</body>
+
+</html>

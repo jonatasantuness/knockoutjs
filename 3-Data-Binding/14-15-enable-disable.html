@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-15. The "enable" and "disable" bindings</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <p>
+    <input type="checkbox" data-bind="checked: isCompany">
+    Registrar como uma empresa
+  </p>
+
+  <p>
+    Seu nome:
+    <input type="text" data-bind="value: name, disable: isCompany">
+  </p>
+
+  <p>
+    Nome da empresa:
+    <input type="text" data-bind="value: companyName, enable: isCompany">
+  </p>
+
+  <script>
+    /* O Enable Binding faz com que o elemento DOM associado seja ativado quando seu valor de parâmetro for verdadeiro. O Disable Binding funciona de maneira oposta, fazendo com que o elemento DOM associado seja desativado quando seu valor for verdadeiro. Essas ligações são úteis com elementos de formulário como inputs, selects e textarea. */
+
+    // ref: https://knockoutjs.com/documentation/enable-binding.html
+
+    /* Neste exemplo se checarmos o box 'Registrar como uma empresa', o observable 'isCompany' será atualizado e os inputs serão habilitados ou desabilitados de acordo. */
+
+    var viewModel = {
+      isCompany: ko.observable(false),
+      companyName: ''
+    }
+
+    ko.applyBindings(viewModel)
+  </script>
+</body>
+
+</html>

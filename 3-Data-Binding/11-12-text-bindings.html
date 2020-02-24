@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-12. The "text" binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <p>
+    Olá, meu nome é
+    <strong data-bind="text: name"></strong>,
+    e eu sou
+    <span data-bind="text: job"></span>
+  </p>
+
+  <script>
+    /* O Text Binding faz com que o elemento DOM associado exiba o valor do texto do seu parâmetro. Normalmente, isso é útil com elementos como <span> ou <em> que tradicionalmente exibem texto, mas tecnicamente você pode usá-lo com qualquer elemento. */
+
+    // ref: https://knockoutjs.com/documentation/text-binding.html
+
+    var viewModel = {
+      name: ko.observable('Jonatas'),
+      job: ko.observable('Web Developer')
+    }
+
+    ko.applyBindings(viewModel);
+  </script>
+</body>
+
+</html>

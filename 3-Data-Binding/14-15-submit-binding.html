@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-15. Submit Binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <form data-bind="submit: fireSubmit">
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p data-bind="text: submitMessage"></p>
+
+  <script>
+    /* O Submit Binding adiciona um manipulador de eventos para que a função JavaScript escolhida seja invocada quando o elemento DOM associado for enviado. */
+
+    /* Normalmente, você deseja usar isso apenas nos elementos do formulário. Quando você usa o Submit Binding em um formulário, o Knockout impede a ação de envio padrão do navegador para esse formulário. Em outras palavras, o navegador chamará a função de manipulador, mas não enviará o formulário ao servidor. Esse é um padrão útil porque, quando você usa o Submit Binding, normalmente é porque você está usando o formulário como uma interface para o seu modelo de exibição, não como um formulário HTML comum. Se você deseja permitir que o formulário seja enviado como um formulário HTML normal, retorne true do seu manipulador de envio. */
+
+    // ref: https://knockoutjs.com/documentation/submit-binding.html
+
+    var viewModel = {
+      submitMessage: ko.observable(),
+      fireSubmit: function () {
+        this.submitMessage('Form Enviado!');
+      }
+    }
+
+    ko.applyBindings(viewModel)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13. Control Flow Bindings - with</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1 data-bind="text: city"></h1>
+
+  <p data-bind="with: coords">
+    <!-- Nós não precisamos especificar a variável 'coords' nos spans abaixo justamente por que o with criou o contexto para isso. -->
+    Latitude: <span data-bind="text: lat"></span>
+    Longitude: <span data-bind="text: lon"></span>
+  </p>
+
+  <script>
+    /* Os With/Using Bindings criam um novo contexto de binding, para que os elementos descendentes sejam ligados no contexto de um objeto especificado. (As diferenças entre esses bindings são descritas em Parâmetros na documentação.) */
+
+    // ref: https://knockoutjs.com/documentation/with-binding.html
+
+    var viewModel = {
+      city: 'São Paulo',
+      coords: {
+        lat: 42.3601,
+        lon: 71.0589
+      }
+    }
+
+    ko.applyBindings(viewModel);
+  </script>
+</body>
+
+</html>

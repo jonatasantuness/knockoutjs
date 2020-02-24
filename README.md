@@ -16,5 +16,26 @@
 - [7. Interacting with Observable Arrays](./2-View-Models-&-Observables/7-interacting-with-observable-arrays.html)
 - [8. Computed Observables](./2-View-Models-&-Observables/8-computed-observables.md)
 
+### Seção 3: Data Binding
+- [9. Chapter Intro](./3-Data-Binding/9-chapter-intro.md)
+- [10. Data-Bind Syntax](./3-Data-Binding/10-data-binding-syntax.md)
+- [11-12. The "attr" binding](./3-Data-Binding/11-12-attr-bindings.html)
+- [11-12. The "css" binding](./3-Data-Binding/11-12-css-bindings.html)
+- [11-12. The "html" binding](./3-Data-Binding/11-12-html-bindings.html)
+- [11-12. The "Style" binding](./3-Data-Binding/11-12-style-bindings.html)
+- [11-12. The "text" binding](./3-Data-Binding/11-12-text-bindings.html)
+- [11-12. The "visible" and "hidden" bindings](./3-Data-Binding/11-12-visible-bindings.html)
+- [13. Control Flow Bindings - foreach](./3-Data-Binding/13-control-flow-bindings-foreach.html)
+- [13. Control Flow Bindings - foreach](./3-Data-Binding/13-control-flow-bindings-if.html)
+- [13. Control Flow Bindings - with](./3-Data-Binding/13-control-flow-bindings-with.html)
+- [14-15. Form & Input - Checked Binding](./3-Data-Binding/14-15-checked-binding.html)
+- [14-15. Form & Input - Click Binding](./3-Data-Binding/14-15-click-binding.html)
+- [14-15. Form & Input - The "enable" and "disable" bindings](./3-Data-Binding/14-15-enable-disable.html)
+- [14-15. Form & Input - Event Binding](./3-Data-Binding/14-15-event-binding.html)
+- [14-15. Form & Input - Submit Binding](./3-Data-Binding/14-15-submit-binding.html)
+- [14-15. Form & Input Value Binding](./3-Data-Binding/14-15-value-binding.html)
+- [16. Custom Bindings - Teoria](./3-Data-Binding/16-custom-bindings.md)
+- [16. Custom Bindings - Prática](./3-Data-Binding/16-custom-bindings.html)
+
 ## Referências
 - [Documenação](https://knockoutjs.com/documentation/introduction.html)

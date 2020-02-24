@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13. Control Flow Bindings - foreach</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>Employees</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+      </tr>
+    </thead>
+
+    <tbody data-bind="foreach: employees">
+      <tr>
+        <td data-bind="text: id"></td>
+        <td data-bind="text: name"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1>Customers</h1>
+
+  <ul data-bind="foreach: customers">
+    <li>
+      <span data-bind="text: $data"></span>
+    </li>
+  </ul>
+
+  <script>
+    /* O binding foreach duplica uma seção de markup para cada entrada em um array e vincula cada cópia desse markup ao item do array correspondente. Isso é especialmente útil para renderizar listas ou tabelas. */
+
+    /* Supondo que sua matriz seja um Observable Array, sempre que você adicionar, remover ou reordenar entrada no array, o binding atualizará com eficiência a interface do usuário para corresponder - inserindo ou removendo mais cópias da markup ou reordenando elementos DOM existentes, sem afetar outros elementos do DOM. Isso é muito mais rápido do que regenerar toda a saída foreach após cada alteração no array. */
+
+    /* Obviamente, você pode aninhar arbitrariamente qualquer número de bindings foreach junto com outras control flow bindings, como if e with. */
+
+    // ref: https://knockoutjs.com/documentation/foreach-binding.html
+
+    var employees = ko.observableArray([
+      { id: 'e100', name: 'Jonatas Antunes' },
+      { id: 'e101', name: 'Anderson Dário' },
+      { id: 'e102', name: 'Daniel Souza' },
+    ]);
+
+    var customers = ko.observableArray([
+      'Luís Damasio',
+      'Fernanda Klabin',
+      'Clovis Ferreira'
+    ]);
+
+    ko.applyBindings();
+  </script>
+</body>
+
+</html>

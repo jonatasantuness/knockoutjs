@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-15. Checked Binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <p>Me mande e-mails:
+    <input type="checkbox" data-bind="checked: acceptSpam" />
+  </p>
+
+  <!-- Esse Box só será visivel se o checkbox de acceptSpam estiver 'checked', logo ele retornará true -->
+
+  <div data-bind="visible: acceptSpam">
+    Prefências de e-mail:
+    <div>
+      <input type="checkbox" value="tecnologia" data-bind="checked: categorySpam" /> Tecnologia
+    </div>
+
+    <div>
+      <input type="checkbox" value="design" data-bind="checked: categorySpam" /> Design
+    </div>
+  </div>
+
+  <script>
+    /* O Checked Binding vincula um form control que possui o atributo 'checked' - ou seja, uma checkbox (<input type = 'checkbox'>) ou um radio button (<input type = 'radio'>) - a uma propriedade no view model. */
+
+    /* Quando o usuário verifica o form control associado, isso atualiza o valor no seu view model. Da mesma forma, quando você atualiza o valor no seu view model, isso marca ou desmarca o form control na tela. */
+
+    /* Nota: Para caixas de texto, listas dropdown e todos os controles de formulário não checaveis, use o value binding para ler e gravar o valor do elemento, e não o checked binding. */
+
+    // ref: https://knockoutjs.com/documentation/checked-binding.html
+
+    var viewModel = {
+      acceptSpam: ko.observable(false),
+      // Inicia os boxes de Tecnologia e Design como 'checked'
+      categorySpam: ko.observableArray([
+        'tecnologia',
+        'design'
+      ])
+    };
+
+    ko.applyBindings(viewModel)
+  </script>
+</body>
+
+</html>

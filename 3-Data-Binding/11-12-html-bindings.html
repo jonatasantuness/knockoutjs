@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-12. The "html" binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div data-bind="html: htmlString"></div>
+
+  <script>
+    /* O HTML Binding faz com que o elemento DOM associado exiba o HTML especificado pelo seu parâmetro. Normalmente, isso é útil quando os valores no seu view model são realmente strings de HTML markup que você deseja renderizar. Se você souber que o valor do view model é um texto sem formatação, então use o Text Binding. */
+
+    // ref: https://knockoutjs.com/documentation/html-binding.html
+
+    var viewModel = {
+      htmlString: ko.observable()
+    }
+
+    viewModel.htmlString('<h1>Eu sou um título!</h1><p>E sou um parágrafo com um <strong>strong</strong></p>');
+
+    ko.applyBindings(viewModel);
+  </script>
+</body>
+
+</html>

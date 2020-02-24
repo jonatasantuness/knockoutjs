@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-12. The "css" binding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+  <style>
+    .notaVermelha {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Boletim Escolar</h1>
+
+  <input type="number" min="0" max="10" placeholder="Nota do aluno"
+    data-bind="value: nota, valueUpdate: 'afterkeydown'">
+
+  <!-- Será aplicada a classe 'notaVermelha'caso o valor da nota seja menor do que 6 -->
+
+  <p>
+    Nota do aluno:
+    <strong data-bind="text: nota, css: { notaVermelha: nota() < 6 }"></strong>
+  </p>
+
+  <script>
+    /* Os css/class Bindings adicionam ou removem uma ou mais classes CSS nomeadas ao elemento DOM associado. Isso é útil, por exemplo, para destacar algum valor em vermelho se ele se tornar negativo. */
+
+    /* Observação: se você não deseja aplicar uma classe CSS, mas deseja atribuir um valor de atributo style diretamente, consulte a aula de style binding. */
+
+    // ref: https://knockoutjs.com/documentation/css-binding.html
+
+    var viewModel = {
+      nota: ko.observable(5)
+    }
+
+    ko.applyBindings(viewModel);
+  </script>
+</body>
+
+</html>

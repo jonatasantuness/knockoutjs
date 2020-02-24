@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16. Custom Bindings</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"
+    integrity="sha256-AxR/VVDvyDycg4AAOfzzo5p4I7zAxNj39FjL+oKm1iM=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1 data-bind="changeColor: color">Alteração de Cor - Exemplo</h1>
+
+  <select data-bind="value: color">
+    <option value="black">Escolha uma cor</option>
+    <option value="blue">Azul</option>
+    <option value="red">Vermelho</option>
+    <option value="green">Verde</option>
+    <option value="yellow">Amarelo</option>
+  </select>
+
+  <br>
+
+  <h1>Exemplo do slideVisible</h1>
+
+  <label>
+    <input type="checkbox" data-bind="checked: slideMessage" />
+    Exibir mensagem
+  </label>
+
+  <div data-bind="slideVisible: slideMessage, slideDuration:600">
+    <p>Mensagem exibida com um slide =D!</p>
+  </div>
+
+  <script>
+    // Criando uma custon binding passando o elemento do DOM e o valor do option
+
+    ko.bindingHandlers.changeColor = {
+      update: function (element, valueAccessor) {
+        var element = $(element);
+        var value = valueAccessor();
+        var valueUnwrapped = ko.unwrap(value);
+
+        element.css('color', valueUnwrapped);
+      }
+    }
+
+    ko.bindingHandlers.slideVisible = {
+      init: function (element, valueAccessor) {
+        var value = ko.unwrap(valueAccessor());
+        $(element).toggle(value);
+      },
+      update: function (element, valueAccessor, allBindings) {
+        var value = valueAccessor();
+        var valueUnwrapped = ko.unwrap(value);
+        var duration = allBindings.get('slideDuration') || 400;
+
+        if (valueUnwrapped == true)
+          $(element).slideDown(duration);
+        else
+          $(element).slideUp(duration);
+      }
+    };
+
+    var viewModel = {
+      color: ko.observable(),
+      slideMessage: ko.observable(false)
+    }
+
+    ko.applyBindings(viewModel);
+  </script>
+</body>
+
+</html>
