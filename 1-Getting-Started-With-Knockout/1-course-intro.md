@@ -1,6 +1,6 @@
 # Course Intro
 
-## O que vocÊ deve saber
+## O que você deve saber
 
 - HTML / CSS
 - Basic JavaScript
