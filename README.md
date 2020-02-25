@@ -57,5 +57,44 @@
 - [24. Component Binding - Teoria](./5-Components/24-component-binding.md)
 - [24. Component Binding - Prática](./5-Components/24-component-binding.html)
 
+### Seção 6: Projeto Goal Tracker
+
+O projeto é um gerenciador de metas onde o usuário poderá cadastrar novos objetivos.
+
+![Preview do Projeto](./6-GoalTracker-Project/goaltracker-preview.jpg)
+
+Introdução sobre o projeto: [Introdução sobre o Projeto](./6-GoalTracker-Project/25-project-intro.md)
+
+#### Dependências
+
+- body-parser
+- cors
+- express
+- mongojs
+
+#### Instruções
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Mude para a pasta do projeto:
+
+```bash
+cd 6-GoalTracker-Project/
+```
+
+Inicie o backend:
+
+```bash
+nodemon app
+```
+
+Abra o arquivo [index.html](./6-GoalTracker-Project/client/index.html) no navegador.
+
+
 ## Referências
+
 - [Documenação](https://knockoutjs.com/documentation/introduction.html)
