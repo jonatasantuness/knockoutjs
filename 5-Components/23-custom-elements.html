@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>23. Custom Elements</title>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+</head>
+
+<body>
+  <newsletter-widget></newsletter-widget>
+
+  <script>
+    ko.components.register('newsletter-widget', {
+      viewModel: function () {
+        this.email = ko.observable();
+        this.showMessage = ko.observable(false);
+        this.submitForm = function () {
+          this.showMessage(true);
+        }
+      },
+      template: '<h3>Inscreva-se na nossa newsletter!</h3>\
+        <form data-bind="submit: submitForm">\
+          <input type="email" data-bind="value: email">\
+          <button type="submit">Inscrever</button>\
+        </form>\
+        <p data-bind="visible: showMessage">\
+          Obrigado por se inscrever! <br>\
+          <strong>\
+            <span data-bind="text: email"></span>\
+          </strong>\
+        </p>'
+    });
+
+    ko.applyBindings();
+  </script>
+</body>
+
+</html>

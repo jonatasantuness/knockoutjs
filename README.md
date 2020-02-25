@@ -47,5 +47,15 @@
 - [19. Native Templating](./4-Templating/19-native-templating.html)
 - [20. Underscore Template Engine](./4-Templating/20-underscore-template-engine.html)
 
+
+### Seção 5: Components
+
+- [21. Chapter Intro](./5-Components/21-chapter-intro.md)
+- [22. What Are Components](./5-Components/22-what-are-components.md)
+- [23. Custom Elements - Teoria](./5-Components/23-custom-elements.md)
+- [23. Custom Elements - Prática](./5-Components/23-custom-elements.html)
+- [24. Component Binding - Teoria](./5-Components/24-component-binding.md)
+- [24. Component Binding - Prática](./5-Components/24-component-binding.html)
+
 ## Referências
 - [Documenação](https://knockoutjs.com/documentation/introduction.html)
